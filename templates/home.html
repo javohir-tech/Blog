@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+<h1>Suvonov Javohir blog</h1>
+{% if user.is_authenticated %}
+<p>Hush kelipsiz</p>
+<p>{{user.}}</p>
+<form action="{% url 'logout' %}" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">Chiqish</button>
+</form>
+{% else %}
+<a href="{% url 'login'%}">Kirish</a> |
+<a href="{% url 'signup'%}">Royhatdan otish</a>
+{%endif%}
+
+{% endblock %}
