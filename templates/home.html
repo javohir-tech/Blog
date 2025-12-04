@@ -4,4 +4,8 @@
 
 <h1>Suvonov Javohir blog</h1>
 {{user.username}}
+<form method="post" action="{% url 'logout' %}">
+    {%csrf_token%}
+    <button type="submit" class="btn btn-danger" >Chiqish</button>
+</form>
 {% endblock %}
