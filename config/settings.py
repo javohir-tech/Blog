@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "accounts",
     "pages",
+    "articles",
 ]
 
 MIDDLEWARE = [
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Tashkent"
 
 USE_I18N = True
 
@@ -134,3 +135,6 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
