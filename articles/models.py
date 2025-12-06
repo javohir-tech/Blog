@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-
 class Article(models.Model):
     title = models.CharField(max_length=150)
     summary = models.CharField(max_length=150, blank=True)

@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crispy_forms",
+    "ckeditor",
+    "ckeditor_uploader",
     "crispy_bootstrap4",
     "accounts",
     "pages",
@@ -121,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS  = [str(BASE_DIR.joinpath('static'))]
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -139,3 +143,14 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
+
+#ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full'
+    },
+}
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTICT_BY_USER = True
