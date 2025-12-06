@@ -3,7 +3,16 @@
 {%block content%}
 <div class="bg-secondary rounded mt-3 text-light p-3">
     <h1>Suvonov Javohirning blogiga hush kelipsiz</h1>
+    <p>{{user.username}}</p>
     <p>siz ozingiz qiziqqan mavzulaar boyicha maqolla oqishingiz mumkin</p>
-    <a href="{%url 'articles' %}" class="btn btn-primary">Maqolalarga o'tish</a>
+    <div class="d-flex align-items-center gap-2">
+        <a href="{%url 'articles' %}" class="btn btn-primary">Maqolalarga o'tish</a>
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Chiqish</button>
+        </form>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
