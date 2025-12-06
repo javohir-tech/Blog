@@ -17,14 +17,14 @@ class ArticleDetailView(DetailView):
     context_object_name = "article"
 
 
-class ArticleUpdateView( LoginRequiredMixin , UserPassesTestMixin , UpdateView ):
+class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
     template_name = "article_update.html"
     fields = ["title", "summary", "body", "photo"]
 
     def test_func(self):
         obj = self.get_object()
-        return obj.author == self.request.user
+        return obj.author == self.request.user or self.request.user.is_superuser
 
 
 class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -34,17 +34,18 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         obj = self.get_object()
-        return obj.author == self.request.user
+        return obj.author == self.request.user or self.request.user.is_superuser
 
 
-class ArticleCreateview( UserPassesTestMixin , CreateView):
+class ArticleCreateview(UserPassesTestMixin, CreateView):
     model = Article
     template_name = "article_create.html"
     fields = ["title", "summary", "body", "photo"]
+    login_url = "/login/"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
+
     def test_func(self):
         return self.request.user.is_superuser
