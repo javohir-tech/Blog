@@ -10,7 +10,7 @@
         <p class="card-text">{{article.body}}</p>
         <div class="d-flex align-items-center gap-3 justify-content-end">
             <a href="{% url 'article_update' article.id %}" class="btn btn-primary">Tahrirlash</a>
-            <a class="btn btn-danger">O'chirish</a>
+            <a href="{% url 'article_delete' article.id %}" class="btn btn-danger">O'chirish</a>
         </div>
     </div>
 </div>
