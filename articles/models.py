@@ -1,12 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 
 class Article(models.Model):
     title = models.CharField(max_length=150)
     summary = models.CharField(max_length=150, blank=True)
-    body = RichTextField()
+    body = models.TextField()
     photo = models.ImageField(upload_to="images/", blank=True)
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
